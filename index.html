@@ -60,15 +60,15 @@
             }
         }
     </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H7WKB65550"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-H7WKB65550');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H7WKB65550"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-H7WKB65550');
+    </script>
 </head>
 <body>
     <div class="container">
@@ -103,55 +103,6 @@
                 });
             })
             .catch(error => console.error('Error fetching data:', error));
-
-        // Cargar el script de la API de Google Analytics
-        (function(w, d, s, g, js, fjs) {
-            g = w.gapi || (w.gapi = {});
-            g.analytics = {
-                q: [],
-                ready: function(cb) {
-                    this.q.push(cb);
-                }
-            };
-            js = d.createElement(s);
-            fjs = d.getElementsByTagName(s)[0];
-            js.src = 'https://apis.google.com/js/platform.js';
-            fjs.parentNode.insertBefore(js, fjs);
-            js.onload = function() {
-                g.load('analytics');
-            };
-        }(window, document, 'script'));
-
-        gapi.analytics.ready(function() {
-            gapi.analytics.auth.authorize({
-                container: 'auth-button',
-                clientid: '321620877'
-            });
-
-            var viewSelector = new gapi.analytics.ViewSelector({
-                container: 'view-selector'
-            });
-
-            var dataChart = new gapi.analytics.googleCharts.DataChart({
-                query: {
-                    metrics: 'ga:pageviews',
-                    dimensions: 'ga:date',
-                    'start-date': '30daysAgo',
-                    'end-date': 'today'
-                },
-                chart: {
-                    container: 'views',
-                    type: 'LINE',
-                    options: {
-                        width: '100%'
-                    }
-                }
-            });
-
-            viewSelector.on('change', function(ids) {
-                dataChart.set({query: {ids: ids}}).execute();
-            });
-        });
     </script>
 </body>
 </html>
